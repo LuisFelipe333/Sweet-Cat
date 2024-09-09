@@ -8,6 +8,10 @@ public class FallingObject : MonoBehaviour
     public Sprite[] sprites; // Lista de sprites
     private SpriteRenderer spriteRenderer;
 
+    // Nombre del objeto con el que quieres que se destruya al colisionar
+    public string targetObjectName1; 
+    public string targetObjectName2; 
+
     private bool isFalling = false;
     // Start is called before the first frame update
     void Start()
@@ -41,6 +45,16 @@ public class FallingObject : MonoBehaviour
         else
         {
             Debug.LogWarning("ID fuera de rango, no se asignó ningún sprite.");
+        }
+    }
+
+    
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == targetObjectName1 || other.gameObject.name == targetObjectName2)
+        {
+            Destroy(gameObject); // Destruir el objeto
         }
     }
 }
