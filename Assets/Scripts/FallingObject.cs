@@ -9,15 +9,17 @@ public class FallingObject : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     // Nombre del objeto con el que quieres que se destruya al colisionar
-    public string targetObjectName1; 
-    public string targetObjectName2; 
+    public string playerName; 
+    public string endScreenName; 
 
     private bool isFalling = false;
+
+    int objectId; //Id del prefab indicando el tipo de pastel
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        int objectId = Random.Range(0, sprites.Length);
+        objectId = Random.Range(0, sprites.Length);
         SetSprite(objectId);
         StartFalling();
     }
@@ -52,7 +54,16 @@ public class FallingObject : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == targetObjectName1 || other.gameObject.name == targetObjectName2)
+        if (other.gameObject.name == playerName)
+        {
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            if (gameManager != null)
+            {
+                gameManager.RegisterPrefabElimination(objectId); // Registra la eliminación del prefab
+            }
+        }
+
+        if (other.gameObject.name == playerName || other.gameObject.name == endScreenName)
         {
             Destroy(gameObject); // Destruir el objeto
         }
