@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         {
             // Incrementa el conteo para el prefab con el ID especificado
             prefabEliminationCounts[prefabID, 1]++;
+            FindObjectOfType<DessertUIPoints>().UpdatePrefabText(prefabID, prefabEliminationCounts[prefabID, 1]);
         }
         else
         {
