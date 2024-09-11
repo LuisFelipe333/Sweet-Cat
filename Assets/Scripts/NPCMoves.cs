@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class NPCMoves : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class NPCMoves : MonoBehaviour
     public string NAWalkingRight;
     public string NAWalkingLeft;
     public string endScreenName;
+    public Sprite[] sprites; // Lista de sprites
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,18 @@ public class NPCMoves : MonoBehaviour
     {
         animator.SetBool(NAWalkingLeft, true);
         isMovingLeft = true;
+    }
+
+    public void UpdateText(int NumberDessert)
+    {
+        TextMeshProUGUI textComponent = GetComponentInChildren<TextMeshProUGUI>(); // Encuentra el componente TextMeshProUGUI en cualquier hijo
+        textComponent.text = NumberDessert.ToString();
+    }
+
+    public void setDessert(int DessertID)
+    {
+        Image imageComponent = GetComponentInChildren<Image>();
+        imageComponent.sprite = sprites[DessertID];
     }
 
 }
