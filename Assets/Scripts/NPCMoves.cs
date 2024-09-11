@@ -46,7 +46,7 @@ public class NPCMoves : MonoBehaviour
             // Detener el movimiento cuando colisiona con otro objeto
             isMovingRight = false;
             animator.SetBool(NAWalkingRight, false);
-            TurnBack();
+            // TurnBack();
         }
 
         if (other.gameObject.name == endScreenName)
@@ -56,13 +56,13 @@ public class NPCMoves : MonoBehaviour
         
     }
 
-    void TurnBack()
+    public void TurnBack()
     {
         animator.SetBool(NAWalkingLeft, true);
         isMovingLeft = true;
     }
 
-    public void UpdateText(int NumberDessert)
+    public void UpdateText(string NumberDessert)
     {
         TextMeshProUGUI textComponent = GetComponentInChildren<TextMeshProUGUI>(); // Encuentra el componente TextMeshProUGUI en cualquier hijo
         textComponent.text = NumberDessert.ToString();
