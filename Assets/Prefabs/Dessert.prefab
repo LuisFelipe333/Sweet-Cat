@@ -103,11 +103,8 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: dbf209f57937db54c92860b839b0faef, type: 3}
   - {fileID: 21300000, guid: e018b30054c8f3541b5ddedf34902d48, type: 3}
-  - {fileID: 21300000, guid: 2cd9440c7761f0c40b336c652b73f19a, type: 3}
-  - {fileID: 21300000, guid: 045792ee4853a1147a1a89239e9ff4b3, type: 3}
   - {fileID: 21300000, guid: d6556771bae7a2744a81b81b7303e83d, type: 3}
   - {fileID: 21300000, guid: 4d0c196e79b57bb4695f9d97023011f4, type: 3}
-  - {fileID: 21300000, guid: 051b3c8b439642f46bb5a3ecb7f08d79, type: 3}
   - {fileID: 21300000, guid: 58c94faa3060de14598313fccc98bc8c, type: 3}
   playerName: Player
   endScreenName: Eraser
