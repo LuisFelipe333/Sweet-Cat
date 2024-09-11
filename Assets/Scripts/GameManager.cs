@@ -17,13 +17,18 @@ public class GameManager : MonoBehaviour
     public GameObject soldText;
     public GameObject timerText;
     public float timeRemaining;
+    public GameObject finalPanel;  // El panel que quieres activar
+    public GameObject SalesText;
+    public GameObject ExpensesText;
+    public GameObject ProfitText;
+
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         dessertsObtained = 0;
         dessertSold = 0;
         printCounts = false;
-        timeRemaining = 100;
         // Inicializa el array 2D con tamaño (n, 2)
         prefabEliminationCounts = new int[numberOfPrefabTypes, 2];
 
@@ -38,8 +43,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeRemaining = timeRemaining - Time.deltaTime;
-        timerText.GetComponentInChildren<TextMeshProUGUI>().text = "Time:   " + Mathf.FloorToInt(timeRemaining).ToString();   
+        if(timeRemaining > 0)
+        {
+            timeRemaining = timeRemaining - Time.deltaTime;
+            if (timeRemaining > 0)
+            {
+                timerText.GetComponentInChildren<TextMeshProUGUI>().text = "Time:   " + Mathf.FloorToInt(timeRemaining).ToString();   
+            }
+        }
+        else
+        {
+            timerText.GetComponentInChildren<TextMeshProUGUI>().text = "Time:   0";
+            SalesText.GetComponentInChildren<TextMeshProUGUI>().text = "Sales:       $" + (dessertSold * 5).ToString();
+            ExpensesText.GetComponentInChildren<TextMeshProUGUI>().text = "Expenses: $" + (dessertsObtained * 2).ToString();
+            ProfitText.GetComponentInChildren<TextMeshProUGUI>().text = "Profit:    $" + ((dessertSold * 5)- (dessertsObtained * 2)).ToString();
+
+            finalPanel.SetActive(true);
+            Time.timeScale = 0;
+                
+        }
+        
 
     }
 
